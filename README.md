@@ -24,7 +24,7 @@ Fichier d'exécution principal. Lancer ce fichier bash afin de générer un nouv
 
 
 - 📚 [generateEmptySudoku.py]: *python generateEmptySudoku.py > sudoku_new.cnf* [source](https://github.com/MohamedAminMallek/pysat_sudoku/blob/master/generateEmptySudoku.py) |
-Fichier python permettant de générer les règles du sudoku sous la forme de clauses écritent dans le fichier [sudoku_new.cnf].
+Fichier python permettant de générer les règles du sudoku sous la forme de clauses écrites dans le fichier [sudoku_new.cnf].
 
 
 - 📚 [pysat.py]: *python pysat.py sudoku_new.cnf* [source](https://github.com/MohamedAminMallek/pysat_sudoku/blob/master/pysat.py) |
