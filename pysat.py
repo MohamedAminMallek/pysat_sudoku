@@ -410,15 +410,26 @@ if __name__ == "__main__":
 
     banner()
     solver = Solver()
-
+    solution = []
     if len(sys.argv) > 1:
         readFile(solver, sys.argv[1])
         #readFile(solver, sys.argv[2])
+        for i in range(1,10,3):
+            r_x = np.random.randint(low=0,high=3,size=1)[0] + i
+            r_y = np.random.randint(low=0,high=3,size=1)[0] + i
+            r_v = np.random.randint(low=1,high=10,size=1)[0]
+
+            init_clause = r_x*100+r_y*10+r_v
+            solver.addClause([init_clause])
+            solution.append(init_clause)
+            print(init_clause)
+
         solver.buildDataStructure()
     else:
         printUsage()
         print("c - Error - Please give me a cnf(.gz) file as input")
         sys.exit(1)
+    
 
     result = solver.solve()
 
@@ -433,7 +444,7 @@ if __name__ == "__main__":
     """
     blockedClauses = []
     """
-    solution = []
+    
 
     blockedClause = []
     for v in solver.finalModel:
@@ -493,12 +504,12 @@ if __name__ == "__main__":
     if result == solver._cst.lit_False:
         solver = Solver()
         readFile(solver, sys.argv[1])
-        for new_clause in solution:
+        for new_clause in solution[:-1]:
             solver.addClause([new_clause])
         solver.buildDataStructure()
         result = solver.solve()
         if result == solver._cst.lit_True:
-            
+            print(sudokuMat)
             f = open("solution.cnf", "w")
             for s in solution:
                 f.write(str(s)+" 0\n")
