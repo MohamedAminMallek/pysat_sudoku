@@ -1,6 +1,7 @@
 from pysat import *
 from generateEmptySudoku import *
 import random
+import pickle
 
 def decode(x):
     z = x % 10
@@ -88,5 +89,7 @@ if __name__ == "__main__":
         val = int(str(hint[0])[2])
         output_matrix[x-1][y-1] = val
     print(output_matrix)
+    with open("solmat.txt", "wb") as fp:  # Pickling
+        pickle.dump(output_matrix, fp)
     print("Clues length :", len(nonremovable))
 
