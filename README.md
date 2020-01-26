@@ -20,7 +20,7 @@ Afin d'utiliser notre travail, vous devez cloner ou télécharger ce dépôt sur
 ### Détails des fonctions:
 
 - 📚 [run_me.sh]: [source](https://github.com/MohamedAminMallek/pysat_sudoku/blob/master/run_me.sh) |
-Fichier d'exécution principal. Lancer ce fichier bash afin de générer un nouveau sudoku ayant une seule et unique solution. 
+Fichier d'exécution principal. Lancer ce fichier Bash afin de générer un nouveau sudoku ayant une seule et unique solution et l'affiche sur pygame. À chaque exécution, la génération du sudoku est différente.
 
 
 - 📚 [generateEmptySudoku.py]: *python generateEmptySudoku.py > sudoku_new.cnf* [source](https://github.com/MohamedAminMallek/pysat_sudoku/blob/master/generateEmptySudoku.py) |
@@ -35,4 +35,7 @@ Fichier python permettant de générer un sudoku ayant une unique solution à pa
 Fichier python permettant de réduire au maximum le nombre d'élément dans la grille tout en restant sur une grille de sudoku ayant une unique solution. 
 
 
+- 📚 [displaygrid.py]: *python displaygrid.py* [source](https://github.com/MohamedAminMallek/pysat_sudoku/blob/master/displaygrid.py) |
+Fichier python permettant d'afficher une grille sur pygame de sudoku avec une unique solution.  
 
+![Sudoku sur Pygame](https://github.com/MohamedAminMallek/pysat_sudoku/blob/master/Capture.PNG)
