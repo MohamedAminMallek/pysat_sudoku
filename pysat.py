@@ -456,45 +456,22 @@ if __name__ == "__main__":
             blockedClause.append(-v)
 
     while result == solver._cst.lit_True:
-    #if result == solver._cst.lit_True and solver._config.printModel: # SAT was claimed
         
-        """
-        blockedClause = []
-        for v in solver.finalModel:
-            if v>110:
-                i = int(str(v)[0])
-                j = int(str(v)[1])
-                val = int(str(v)[2])
-                sudokuMat[i-1][j-1] = val
-                blockedClause.append(-v)
-        """
-        #print(sudokuMat)
-        #print(blockedClause)
-
-        #blockedClauses.append(blockedClause)
+    
 
         solver = Solver()
         
         readFile(solver, sys.argv[1])
-        #readFile(solver, sys.argv[2])
-        
-        #print(blockedClause)
 
         new_clause = blockedClause[np.random.randint(low=0,high=len(blockedClause))]*-1
-        while new_clause in solution:
-            new_clause = blockedClause[np.random.randint(low=0,high=len(blockedClause))]*-1
+        #while new_clause in solution:
+        #    new_clause = blockedClause[np.random.randint(low=0,high=len(blockedClause))]*-1
         solution.append(new_clause)
         
-        #print(solution)
-        #print("New Clause = ",new_clause)
         
         for new_clause in solution:
             solver.addClause([new_clause])
         
-        """
-        for c in blockedClauses:
-            solver.addClause(c)
-        """
         solver.addClause(blockedClause)
 
         solver.buildDataStructure()
