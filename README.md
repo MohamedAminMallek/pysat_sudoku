@@ -11,6 +11,10 @@ Afin d'utiliser notre travail, vous devez cloner ou télécharger ce dépôt sur
 
 ## Explication du dépôt
 
+### Solution proposée:
+
+
+
 ### Exécution du code:
 
 - ▶️️ Téléchargement du dépôt *pysat_sudoku*: [source](https://github.com/MohamedAminMallek/pysat_sudoku)
