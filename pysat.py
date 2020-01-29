@@ -409,31 +409,33 @@ if __name__ == "__main__":
         print("c File readed in {t:03.2f}s".format(t=time.time()-starttime))
 
     banner()
+    
     solver = Solver()
+    
     solution = []
+    
     if len(sys.argv) > 1:
+
+        #Ajouter les règles du sudoku
         readFile(solver, sys.argv[1])
+        #Générer des « hints » random afin de garantir des plateaux de sudoku différents
         for i in range(1,10,3):
             r_x = np.random.randint(low=0,high=3,size=1)[0] + i
             r_y = np.random.randint(low=0,high=3,size=1)[0] + i
             r_v = np.random.randint(low=1,high=10,size=1)[0]
-
             init_clause = r_x*100+r_y*10+r_v
             solver.addClause([init_clause])
             solution.append(init_clause)
-            print(init_clause)
-
         solver.buildDataStructure()
     else:
         printUsage()
         print("c - Error - Please give me a cnf(.gz) file as input")
         sys.exit(1)
     
-
+    # Résoudre le sudoku et sauvegarder la solution.
+    # Bloquer cette solution => solution ciblée.
     result = solver.solve()
-
     sudokuMat = np.zeros((9,9))
-    
     blockedClause = []
     for v in solver.finalModel:
         if v>110:
@@ -443,25 +445,25 @@ if __name__ == "__main__":
             sudokuMat[i-1][j-1] = val
             blockedClause.append(-v)
 
+    #Boucler jusqu’à on trouve plus de solution.
     while result == solver._cst.lit_True:
         
         solver = Solver()
         
         readFile(solver, sys.argv[1])
 
+        
+        #Ajouter une clause de la solution ciblée (première solution)
         new_clause = blockedClause[np.random.randint(low=0,high=len(blockedClause))]*-1
-        
         solution.append(new_clause)
-        
         for new_clause in solution:
             solver.addClause([new_clause])
-        
         solver.addClause(blockedClause)
-
         solver.buildDataStructure()
         
         result = solver.solve()
     
+    #sauvegarder la solution dans un fichier .cnf
     if result == solver._cst.lit_False:
         solver = Solver()
         readFile(solver, sys.argv[1])
