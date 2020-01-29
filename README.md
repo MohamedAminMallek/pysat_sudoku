@@ -13,6 +13,14 @@ Afin d'utiliser notre travail, vous devez cloner ou télécharger ce dépôt sur
 
 ### Solution proposée:
 
+![](https://raw.githubusercontent.com/MohamedAminMallek/pysat_sudoku/master/pic/01.png)
+
+![](https://raw.githubusercontent.com/MohamedAminMallek/pysat_sudoku/master/pic/02.png)
+
+![](https://raw.githubusercontent.com/MohamedAminMallek/pysat_sudoku/master/pic/03.png)
+
+![](https://raw.githubusercontent.com/MohamedAminMallek/pysat_sudoku/master/pic/04.png)
+
 
 
 ### Exécution du code:
