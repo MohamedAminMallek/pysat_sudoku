@@ -413,7 +413,6 @@ if __name__ == "__main__":
     solution = []
     if len(sys.argv) > 1:
         readFile(solver, sys.argv[1])
-        #readFile(solver, sys.argv[2])
         for i in range(1,10,3):
             r_x = np.random.randint(low=0,high=3,size=1)[0] + i
             r_y = np.random.randint(low=0,high=3,size=1)[0] + i
@@ -433,19 +432,8 @@ if __name__ == "__main__":
 
     result = solver.solve()
 
-    #if result == solver._cst.lit_False:
-    #    print("c UNSATISFIABLE")
-    #elif result == solver._cst.lit_True:
-    #    print("c SATISFIABLE")
-    #else:
-    #    print("c UNKNOWN")
-    #solver.printFinalStats()
     sudokuMat = np.zeros((9,9))
-    """
-    blockedClauses = []
-    """
     
-
     blockedClause = []
     for v in solver.finalModel:
         if v>110:
@@ -457,17 +445,13 @@ if __name__ == "__main__":
 
     while result == solver._cst.lit_True:
         
-    
-
         solver = Solver()
         
         readFile(solver, sys.argv[1])
 
         new_clause = blockedClause[np.random.randint(low=0,high=len(blockedClause))]*-1
-        #while new_clause in solution:
-        #    new_clause = blockedClause[np.random.randint(low=0,high=len(blockedClause))]*-1
-        solution.append(new_clause)
         
+        solution.append(new_clause)
         
         for new_clause in solution:
             solver.addClause([new_clause])
@@ -477,7 +461,7 @@ if __name__ == "__main__":
         solver.buildDataStructure()
         
         result = solver.solve()
-    # As in the SAT competition, ends with the correct error code
+    
     if result == solver._cst.lit_False:
         solver = Solver()
         readFile(solver, sys.argv[1])
